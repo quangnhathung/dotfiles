@@ -1,0 +1,113 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "arch",
+    "color": {
+      "1": "cyan",  // Màu chính của khối logo
+      "2": "blue"   // Màu phụ (thường là phần viền hoặc chữ Arch dưới logo)
+    },
+    "padding": {
+      "top": 2,
+      "left": 2,
+      "right": 5
+    }
+  },
+  "display": {
+    "separator": "  ", 
+    "color": {
+      "keys": "blue" 
+    },
+    "size": {
+      "ndigits": 0,
+      "maxPrefix": "MB"
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+
+    {
+      "type": "os",
+      "key": " OS",
+      "keyColor": "blue"
+    },
+    {
+      "type": "kernel",
+      "key": " Kernel",
+      "keyColor": "blue"
+    },
+    {
+      "type": "uptime",
+      "key": " Uptime",
+      "keyColor": "blue"
+    },
+    {
+      "type": "packages",
+      "key": " Packages",
+      "keyColor": "blue"
+    },
+    {
+      "type": "shell",
+      "key": " Shell",
+      "keyColor": "blue"
+    },
+
+    "break", 
+    {
+      "type": "wm",
+      "key": " WM",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "theme",
+      "key": "󰉼 Theme",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "icons",
+      "key": "󰀻 Icons",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminal",
+      "key": " Terminal",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminalfont",
+      "key": " Font",
+      "keyColor": "cyan"
+    },
+
+    "break",
+
+    {
+      "type": "cpu",
+      "key": " CPU",
+      "keyColor": "green"
+    },
+    {
+      "type": "gpu",
+      "key": "󰢮 GPU",
+      "keyColor": "green"
+    },
+    {
+      "type": "memory",
+      "key": " Memory",
+      "keyColor": "green"
+    },
+    {
+      "type": "disk",
+      "key": "󰋊 Disk",
+      "keyColor": "green"
+    },
+    {
+      "type": "battery",
+      "key": " Battery",
+      "keyColor": "green"
+    },
+
+    "break",
+    "colors"
+  ]
+}

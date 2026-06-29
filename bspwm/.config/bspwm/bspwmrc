@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# =========================================================
+# 1. AUTOSTART - Khởi động các tiến trình nền
+# =========================================================
+# Vá lỗi Touchpad: Tự động quét và bật Tapping bằng tên thay vì ID cứng
+for id in $(xinput list | grep -i "touchpad" | grep -o 'id=[0-9]*' | cut -d= -f2); do
+    xinput set-prop "$id" "libinput Tapping Enabled" 1
+done
+
+# Khởi động trình quản lý phím tắt
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Fix lỗi trỏ chuột biến thành dấu X đen trên nền desktop trống
+xsetroot -cursor_name left_ptr &
+
+# Khởi động các tác vụ hệ thống và giao diện
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+~/.local/bin/wallpaper.sh &
+picom --config ~/.config/picom/picom.conf &
+~/.config/polybar/launch.sh &
+pgrep -x dunst > /dev/null || dunst &
+~/flameshot-13.3.AppImage &
+
+# =========================================================
+# 2. WORKSPACE & MONITORS - Cấu hình không gian làm việc
+# =========================================================
+# Cấu hình 9 workspace
+bspc monitor -d I II III IV V VI VII VIII IX
+
+# Ép khoảng trống các viền về 0 để Polybar Dynamic Island hoạt động nổi (float) hoàn toàn
+bspc config top_padding         0
+bspc config bottom_padding      0
+bspc config left_padding        0
+bspc config right_padding       0
+
+# =========================================================
+# 3. APPEARANCE - Thẩm mỹ & Viền cửa sổ
+# =========================================================
+bspc config border_width         1
+bspc config window_gap           3  
+# Đồng bộ màu viền với mã màu Catppuccin trên Polybar của bạn
+bspc config focused_border_color "#89B4FA" # Xanh biển (cửa sổ đang chọn)
+bspc config normal_border_color  "#45475A" # Xám đen (cửa sổ không chọn)
+bspc config active_border_color  "#F38BA8" # Đỏ/Hồng (khi có thông báo/urgency)
+
+# =========================================================
+# 4. BEHAVIOR - Hành vi điều khiển
+# =========================================================
+bspc config split_ratio          0.65
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focus_follows_pointer true   # Chuột chỉ vào đâu, tự động focus vào đó (rất tiện khi code)
+bspc config pointer_modifier     mod4    # Giữ phím Super (Mod4) + chuột trái để kéo cửa sổ đang float
+
+# =========================================================
+# 5. WINDOW RULES - Quy tắc riêng cho ứng dụng
+# =========================================================
+# Các rule gốc của bạn (Giữ nguyên tính ổn định)
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Flameshot state=floating
+bspc rule -a flameshot state=floating
+bspc rule -a mpv state=floating center=true
+
+# Bổ sung một số rule chuẩn cho nhu cầu chung
+bspc rule -a Pavucontrol state=floating center=true  # Trình quản lý âm lượng luôn nổi ở giữa
+#bspc rule -a Polybar manage=off border=off state=floating LAYER=above
+bspc config automatic_scheme alternate

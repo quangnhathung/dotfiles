@@ -1,0 +1,135 @@
+/* =========================================================
+   CẤU HÌNH CƠ BẢN
+   ========================================================= */
+configuration {
+    modi: "drun";
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: "";
+    drun-display-format: "{name}";
+    disable-history: false;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+    kb-cancel: "Escape,Super+space";
+    drun-match-fields: "name";
+    matching: "fuzzy";
+    sort: true;
+    sorting-method: "fzf";
+}
+
+/* =========================================================
+   BẢNG MÀU HIỆN ĐẠI
+   ========================================================= */
+* {
+    /* Lớp kính mờ đè lên ảnh nền (Màu đen với 85% Opacity - D9) */
+    bg-overlay:   #11111b96; 
+    /* Nền thanh tìm kiếm (Mờ nhẹ) */
+    bg-input:     #1e1e2eB3; 
+    
+    fg-main:      #cdd6f4;      /* Màu chữ trắng sáng */
+    fg-dim:       #a6adc8;      /* Màu chữ phụ */
+    primary:      #4b5563;      /* Màu xanh dương chủ đạo */
+    border-color: #bad2fa;      /* Màu viền (Đồng bộ màu xanh) */
+    
+    background-color: transparent;
+    text-color: @fg-main;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+/* =========================================================
+   WINDOW (Cửa sổ chính bao bọc toàn bộ)
+   ========================================================= */
+window {
+    transparency: "real";
+    width: 750px;
+    border: 1px;                
+    border-color: @border-color;
+    border-radius: 12px;
+    
+    /* TRẢ VỀ WIDTH */
+    background-image: url("/home/quangnhathung/images/Theme/rofi.jpeg", width);
+}
+
+/* =========================================================
+   MAINBOX (Bố cục trên xuống dưới)
+   ========================================================= */
+mainbox {
+    background-color: @bg-overlay;
+    orientation: vertical;
+    children: [ inputbar, listview ];
+    
+    /* ĐỘN THÊM ĐÁY: Trên 25px, Phải 25px, Dưới 60px, Trái 25px */
+    padding: 25px 25px 60px 25px;
+    spacing: 20px;
+}
+
+/* =========================================================
+   THANH TÌM KIẾM (Thiết kế hiện đại - Floating Pill)
+   ========================================================= */
+inputbar {
+    background-color: @bg-input;
+    border: 2px solid;           /* Thêm viền mỏng để tạo điểm nhấn */
+    border-color: @primary;      /* Dùng màu xanh chủ đạo làm viền */
+    border-radius: 100px;        /* Bo tròn hoàn toàn hai đầu tạo hình viên thuốc */
+    padding: 12px 20px;          /* Tăng khoảng trống hai bên để chữ không bị sát lề */
+    margin: 0px 0px 15px 0px;    /* Đẩy danh sách ứng dụng xuống một chút, tạo sự tách biệt */
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @border-color;   /* Màu icon tìm kiếm sáng và nổi bật hơn */
+    font: "JetBrainsMono Nerd Font 14";
+    background-color: transparent;
+    margin: 0px 15px 0px 0px;
+    vertical-align: 0.5;         /* Căn giữa icon theo chiều dọc */
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg-main;
+    placeholder: "Search applications...";
+    placeholder-color: @fg-dim;
+    vertical-align: 0.5;         /* Căn giữa text theo chiều dọc để đồng bộ với icon */
+    blink: true;                 /* Giữ con trỏ nhấp nháy tạo cảm giác động */
+}
+
+/* =========================================================
+   DANH SÁCH ỨNG DỤNG (Phía dưới)
+   ========================================================= */
+listview {
+    columns: 1;         /* Vẫn giữ 2 cột cho gọn gàng */
+    lines: 8;          /* Hiển thị 7 hàng */
+    spacing: 10px;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+}
+
+/* =========================================================
+   TỪNG ỨNG DỤNG
+   ========================================================= */
+element {
+    orientation: horizontal;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+element-icon {
+    size: 32px;
+    margin: 0 15px 0 0;
+    cursor: inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    cursor: inherit;
+}
+
+/* Khi di chuột hoặc dùng phím mũi tên chọn vào */
+element selected.normal {
+    background-color: @primary;
+    text-color: #11111B; /* Chữ chuyển sang màu đen để nổi bật trên nền xanh */
+}

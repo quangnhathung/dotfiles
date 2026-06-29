@@ -1,0 +1,70 @@
+/* =========================================================
+   ROFI POWER MENU - BỐ CỤC LƯỚI (GRID) 100% AN TOÀN
+   ========================================================= */
+configuration {
+    show-icons: false;
+}
+
+* {
+    /* Bảng màu chuẩn Catppuccin của bạn */
+    bg:          #1e1e2e;    /* Nền chính */
+    bg-selected: #89b4fa;    /* Nền xanh khi chọn */
+    fg:          #cdd6f4;    /* Chữ trắng */
+    fg-selected: #11111b;    /* Chữ đen khi chọn */
+    border-col:  #89b4fa;    /* Viền xanh */
+
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+/* =========================================================
+   CỬA SỔ CHÍNH
+   ========================================================= */
+window {
+    width: 650px;
+    location: center;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @border-col;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Ẩn thanh tìm kiếm, chỉ hiện danh sách */
+mainbox {
+    children: [ listview ];
+}
+
+/* =========================================================
+   DANH SÁCH (Sử dụng 5 cột, 1 hàng)
+   ========================================================= */
+listview {
+    columns: 5;
+    lines: 1;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    spacing: 15px;
+}
+
+/* =========================================================
+   TỪNG Ô TÙY CHỌN
+   ========================================================= */
+element {
+    orientation: vertical;
+    padding: 20px 0px;
+    border-radius: 10px;
+}
+
+element-text {
+    horizontal-align: 0.5; /* Căn giữa nội dung */
+    vertical-align: 0.5;
+    cursor: pointer;
+}
+
+element selected.normal {
+    background-color: @bg-selected;
+    text-color: @fg-selected;
+}

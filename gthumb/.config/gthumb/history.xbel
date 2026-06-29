@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///home/quangnhathung/images/Screenshots" added="2026-06-27T05:38:00.687852Z" modified="2026-06-27T05:38:00.687858Z" visited="2026-06-27T05:38:00.687853Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687854Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/quangnhathung/images/Theme" added="2026-06-27T05:38:00.687859Z" modified="2026-06-27T05:38:00.687862Z" visited="2026-06-27T05:38:00.687859Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687859Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/quangnhathung/images/Wallpapers" added="2026-06-27T05:38:00.687863Z" modified="2026-06-27T05:38:00.687864Z" visited="2026-06-27T05:38:00.687863Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687864Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/quangnhathung/Downloads" added="2026-06-27T05:38:00.687865Z" modified="2026-06-27T05:38:00.687870Z" visited="2026-06-27T05:38:00.687867Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687869Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/quangnhathung/images" added="2026-06-27T05:38:00.687870Z" modified="2026-06-27T05:38:00.687873Z" visited="2026-06-27T05:38:00.687871Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687871Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/quangnhathung" added="2026-06-27T05:38:00.687874Z" modified="2026-06-27T05:38:00.687875Z" visited="2026-06-27T05:38:00.687874Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="gThumb" exec="&apos;org.gnome.gThumb %u&apos;" modified="2026-06-27T05:38:00.687874Z" count="1"/>
+        </bookmark:applications>
+        <bookmark:private/>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

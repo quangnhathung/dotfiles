@@ -1,0 +1,86 @@
+/**
+ * Cấu hình Rofi Pop-up Menu
+ */
+
+* {
+    bg-col:  #1E1E2E; /* Nền tối */
+    bg-sel:  #89B4FA; /* Xanh biển khi di chuột vào */
+    border-col: #89B4FA; /* Viền ngoài xanh biển */
+    fg-col:  #CDD6F4; /* Màu chữ trắng/xám */
+    fg-sel:  #1E1E2E; /* Màu chữ khi được chọn (chữ đen trên nền xanh) */
+
+    font: "JetBrainsMono Nerd Font 12";
+    background-color: transparent;
+}
+
+window {
+    width: 400px;
+    border: 2px;
+    border-color: @border-col;
+    border-radius: 13px; /* Bo góc đồng bộ với picom */
+    background-color: @bg-col;
+    padding: 15px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    background-color: transparent;
+    padding: 5px 5px 15px 5px;
+}
+
+prompt {
+    background-color: @bg-sel;
+    text-color: @bg-col;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font: "JetBrainsMono Nerd Font Bold 12";
+}
+
+entry {
+    padding: 8px;
+    text-color: @fg-col;
+    background-color: transparent;
+    placeholder: "Tìm kiếm...";
+    placeholder-color: #6C7086;
+}
+
+listview {
+    lines: 4; /* Số dòng hiển thị khớp với 4 account */
+    columns: 1;
+    background-color: transparent;
+    border: 0px;
+    spacing: 5px;
+}
+
+element {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg-col;
+}
+
+element selected.normal {
+    background-color: @bg-sel;
+    text-color: @fg-sel;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    vertical-align: 0.5;
+}

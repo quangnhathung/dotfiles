@@ -1,0 +1,172 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + space
+    pgrep -x rofi >/dev/null && killall rofi || rofi -show drun -theme ~/.config/rofi/config.rasi
+
+# make sxhkd reload its configuration file:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+
+
+# close (w) and kill (shif + w)
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+#super + m
+#	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+#super + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest window
+#super + g
+#	bspc node -s biggest.window
+
+#
+# state/flags
+#
+
+# set the window state
+super + {t,s,f}
+	bspc node -t {tiled,floating,fullscreen}
+
+# set the node flags
+super + ctrl + {l,x,p}
+	bspc node -g {locked,sticky,private}
+
+#
+# focus/swap
+#
+
+# focus the node in the given direction
+super + {_,shift + }{KP_Left,KP_Down,KP_Up,KP_Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+#super + {_,shift + }c
+#	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+#uper + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + shift + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio: chia tir leej cho vùng trống vwuaf tạo
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node, Xóa vvungf trống
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop, xóa tất cả
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward (Ra xa tâm)
+super + alt + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward (Lại gần tâm)
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+#super + {Left,Down,Up,Right}
+#	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Tăng sáng màn hình
+XF86MonBrightnessUp
+	~/.local/bin/brightness.sh up
+
+# Giảm sáng màn hình
+XF86MonBrightnessDown
+	~/.local/bin/brightness.sh down
+
+# Wallpaper previous
+super + Prior
+    ~/.local/bin/wallpaper.sh prev
+
+# Wallpaper next
+super + Next
+    ~/.local/bin/wallpaper.sh next
+
+# Wallpaper random
+super + shift + Next
+    ~/.local/bin/wallpaper.sh random
+# dynamic island
+super + shift + b
+    ~/.config/polybar/peek.sh
+
+# Tăng âm lượng
+XF86AudioRaiseVolume
+	~/.local/bin/volume.sh up
+
+# Giảm âm lượng
+XF86AudioLowerVolume
+	~/.local/bin/volume.sh down
+
+# Tắt/Bật tiếng
+XF86AudioMute
+	~/.local/bin/volume.sh mute
+
+# Bật/Tắt micro (Mic Mute) - Giữ nguyên của bạn
+XF86AudioMicMute
+	wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+# navigate
+alt + Tab
+    rofi -show window -theme ~/.config/rofi/config.rasi
+
+super + Print
+	~/flameshot-13.3.AppImage gui
+
+Print
+	~/flameshot-13.3.AppImage gui --accept-on-select -p ~/images/Screenshots -c
